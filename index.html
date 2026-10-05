@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bolos, trufas e kits de presente zero açúcar, feitos à mão com cacau belga. Entrega refrigerada em São Paulo.">
+    <title>Zella | Confeitaria Zero Açúcar Alta Gastronomia</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+    <script src="js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="relative min-h-screen flex flex-col selection:bg-burgundy selection:text-cream">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-burgundy text-cream text-xs sm:text-sm py-2 px-4 text-center font-light tracking-widest uppercase border-b border-gold/30 flex justify-between items-center z-50">
+        <div class="hidden md:block w-1/4 text-left text-xs text-gold/80 italic">Confeitaria Zero Açúcar</div>
+        <div class="w-full md:w-1/2 flex items-center justify-center gap-2">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-gold animate-pulse"></i>
+            <span>Delivery pelo iFood • Confeitaria zero açúcar</span>
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-gold animate-pulse"></i>
+        </div>
+        <div class="hidden md:block w-1/4 text-right text-xs text-cream/80">
+            <a href="tel:0800000000" class="hover:text-gold transition">Atendimento Exclusivo</a>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-cream-border/60 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden text-burgundy p-2 focus:outline-none" aria-label="Abrir Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+
+                <!-- Desktop Navigation Left -->
+                <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-charcoal/80 tracking-wide">
+                    <a href="#filosofia" class="hover:text-burgundy transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold hover:after:w-full after:transition-all">Nossa Filosofia</a>
+                    <a href="#colecoes" data-filter="bolos" class="hover:text-burgundy transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold hover:after:w-full after:transition-all">Bolos e Fatias</a>
+                    <a href="#colecoes" data-filter="doces" class="hover:text-burgundy transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold hover:after:w-full after:transition-all">Doces</a>
+                </nav>
+
+                <!-- Logo Brand -->
+                <a href="#" class="text-center group flex flex-col items-center"><img src="images/logo/logo-header.png" alt="Zella Confeitaria Zero Açúcar" class="block h-11 sm:h-14 group-hover:scale-105 transition-transform duration-300"></a>
+
+                <!-- Desktop Navigation Right & Utilities -->
+                <div class="flex items-center space-x-6">
+                    <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-charcoal/80 tracking-wide mr-2">
+                        <a href="#presentes" class="hover:text-burgundy transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold hover:after:w-full after:transition-all">Kits & Presentes</a>
+                        <a href="#lojas" class="hover:text-burgundy transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold hover:after:w-full after:transition-all">Conheça nossa loja</a>
+                    </nav>
+
+                    <!-- Cart Drawer Trigger Button -->
+                    <button id="open-cart-btn" aria-label="Abrir sacola" class="relative bg-burgundy text-cream hover:bg-burgundy-light p-2.5 rounded-full transition flex items-center justify-center shadow-md">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-gold text-burgundy-dark font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center border-2 border-cream hidden">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-cream border-b border-cream-border px-6 py-6 space-y-4">
+            <a href="#filosofia" class="block text-lg font-serif-title text-burgundy hover:text-gold">Nossa Filosofia</a>
+            <a href="#colecoes" data-filter="bolos" class="block text-lg font-serif-title text-burgundy hover:text-gold">Bolos e Fatias</a>
+            <a href="#colecoes" data-filter="doces" class="block text-lg font-serif-title text-burgundy hover:text-gold">Doces</a>
+            <a href="#presentes" class="block text-lg font-serif-title text-burgundy hover:text-gold">Kits & Presentes Premium</a>
+            <a href="#lojas" class="block text-lg font-serif-title text-burgundy hover:text-gold">Conheça nossa loja</a>
+            <div class="pt-4 border-t border-cream-border flex gap-4 text-xs font-semibold uppercase tracking-wider text-burgundy">
+                <span>Atendimento VIP</span>
+                <span>•</span>
+                <span>São Paulo & Envio Nacional</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center bg-cream border-b border-cream-border overflow-hidden py-16 lg:py-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Text Content Left -->
+                <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-burgundy/5 border border-burgundy/15 text-burgundy text-xs font-semibold tracking-widest uppercase">
+                        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                        Alta Confeitaria & Nutrição Consciente
+                    </div>
+
+                    <h1 class="font-serif-title text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-burgundy leading-[1.1]">
+                        Alta Confeitaria. <br>
+                        <span class="italic font-normal text-gold-dark">Zero Açúcar.</span>
+                    </h1>
+
+                    <p class="text-charcoal/80 text-base sm:text-lg font-light max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Experiências gastronômicas sofisticadas, elaboradas artesanalmente com ingredientes nobres, cacau puro e zero adição de açúcares. Sem abrir mão da textura perfeita.
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#colecoes" class="inline-flex items-center justify-center px-8 py-4 bg-burgundy text-cream rounded-full font-medium tracking-wide hover:bg-burgundy-light transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group">
+                            <span>Explorar Coleção</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#presentes" class="inline-flex items-center justify-center px-8 py-4 border-2 border-burgundy text-burgundy rounded-full font-medium tracking-wide hover:bg-burgundy hover:text-cream transition-all">
+                            <span>Montar Caixa Presente</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="pt-8 border-t border-cream-border/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <p class="font-serif-title text-2xl font-bold text-burgundy">100%*</p>
+                            <p class="text-xs text-charcoal/70 uppercase tracking-wider">Zero Açúcar</p>
+                        </div>
+                        <div>
+                            <p class="font-serif-title text-2xl font-bold text-burgundy">Gourmet</p>
+                            <p class="text-xs text-charcoal/70 uppercase tracking-wider">Cacau Belga & Callebaut</p>
+                        </div>
+                        <div>
+                            <p class="font-serif-title text-2xl font-bold text-burgundy">Artesanal</p>
+                            <p class="text-xs text-charcoal/70 uppercase tracking-wider">Embalagens de Luxo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Hero Visual Right -->
+                <div class="lg:col-span-6 relative flex justify-center">
+                    <div class="relative w-full max-w-md lg:max-w-lg">
+                        
+                        <!-- Background Glow Effect -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gold/20 rounded-full filter blur-3xl -z-10"></div>
+
+                        <img data-img="duo" alt="Bolos Zella: pistache, chocolate, limão com frutas vermelhas e fatia de red velvet" class="w-full aspect-[3/4] object-cover rounded-3xl shadow-2xl border border-gold/20">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Differentiators Grid -->
+    <section class="py-12 bg-burgundy text-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-burgundy-dark/40 border border-gold/10">
+                    <div class="p-3 bg-gold/15 rounded-xl text-gold shrink-0">
+                        <i data-lucide="leaf" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif-title text-xl font-semibold text-cream">Adoçantes 100% Naturais</h3>
+                        <p class="text-xs text-cream/70 mt-1 leading-relaxed">Utilizamos apenas eritritol, stévia purificada e taumatina. Sem residual amargo ou impacto glicêmico.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-burgundy-dark/40 border border-gold/10">
+                    <div class="p-3 bg-gold/15 rounded-xl text-gold shrink-0">
+                        <i data-lucide="gift" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif-title text-xl font-semibold text-cream">Embalagens de Presente</h3>
+                        <p class="text-xs text-cream/70 mt-1 leading-relaxed">Caixas rígidas bordô com berço aveludado, papel de seda botânico e fitas de cetim personalizadas.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4 p-4 rounded-2xl bg-burgundy-dark/40 border border-gold/10">
+                    <div class="p-3 bg-gold/15 rounded-xl text-gold shrink-0">
+                        <i data-lucide="truck" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif-title text-xl font-semibold text-cream">Delivery pelo iFood</h3>
+                        <p class="text-xs text-cream/70 mt-1 leading-relaxed">Peça pelo iFood e receba em casa.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="colecoes" class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="font-serif-title text-3xl sm:text-4xl lg:text-5xl font-bold text-burgundy">Nosso cardápio</h2>
+                <div class="w-16 h-0.5 bg-gold mx-auto my-4"></div>
+                <p class="text-charcoal/75 text-sm sm:text-base">Bolos, doces, café e presentes. Os itens sem açúcar levam a marca “Zero açúcar”.</p>
+            </div>
+            <div id="filter-bar" class="sticky z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 mb-10 bg-cream/95 backdrop-blur-md transition-shadow duration-300">
+                <div id="filter-container" class="relative flex flex-wrap justify-center gap-2 max-w-4xl mx-auto"></div>
+            </div>
+            <div id="products-grid"></div>
+        </div>
+    </section>
+
+    <!-- Packaging & Experience Highlight Section -->
+    <section id="presentes" class="py-20 bg-burgundy text-cream relative overflow-hidden">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6">
+                    <img data-img="kit" alt="Caixa de presente Zella aberta com mini bolo, trufas, potes e embalagens com laço" loading="lazy" class="rounded-3xl w-full max-w-lg mx-auto shadow-2xl border border-gold/20">
+                </div>
+
+                <!-- Right Description & Gift Builder -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-gold text-xs font-semibold uppercase tracking-[0.25em]">A Arte de Presentear</span>
+                    <h2 class="font-serif-title text-3xl sm:text-4xl lg:text-5xl font-bold text-cream leading-tight">
+                        Surpreenda com uma experiência memorável.
+                    </h2>
+                    <p class="text-cream/80 text-base leading-relaxed font-light">
+                        Na Zella, acreditamos que presentear é um ato de afeto. Nossas embalagens bordô com acabamento aveludado e laços em cetim transmitem sofisticação antes mesmo da primeira garfada.
+                    </p>
+
+                    <ul class="space-y-4 pt-2 text-sm text-cream/90">
+                        <li class="flex items-center space-x-3">
+                            <span class="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold text-xs">✓</span>
+                            <span>Acompanha sacola de papel encorpado creme com alças trançadas.</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold text-xs">✓</span>
+                            <span>Delivery pelo iFood, direto na sua casa.</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <span class="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold text-xs">✓</span>
+                            <span>Ideal para aniversários, corporativo e datas comemorativas.</span>
+                        </li>
+                    </ul>
+
+                    <div class="pt-4">
+                        <a href="#colecoes" data-filter="presentes" class="inline-flex items-center gap-2 px-8 py-4 bg-gold text-burgundy-dark font-semibold rounded-full hover:bg-gold-light transition shadow-lg"><i data-lucide="gift" class="w-5 h-5"></i><span>Ver opções de presente</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy / About Section -->
+    <section id="filosofia" class="py-20 bg-cream">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <img src="images/logo/logo-header.png" alt="Zella" class="block h-20 mx-auto">
+            <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-burgundy mt-2 mb-6">Alta Gastronomia Sem Açúcar, Sem Agressão</h2>
+            
+            <p class="text-charcoal/80 text-base sm:text-lg leading-relaxed font-light max-w-3xl mx-auto">
+                "Nossa missão nasceu do desejo de unir dois mundos aparentemente opostos: a sofisticação da patisserie francesa tradicional e os benefícios de uma alimentação livre de açúcar refinado. Desenvolvemos fórmulas exclusivas usando cacau selecionado, farinhas nobres e edulcorantes naturais para criar sabores inesquecíveis."
+            </p>
+
+            <div class="mt-8 flex justify-center items-center space-x-8">
+                <div class="text-center">
+                    <p class="font-serif-title text-3xl font-bold text-burgundy">0%</p>
+                    <p class="text-xs uppercase tracking-wider text-charcoal/70">Açúcar Adicionado</p>
+                </div>
+                <div class="h-8 w-px bg-cream-border"></div>
+                <div class="text-center">
+                    <p class="font-serif-title text-3xl font-bold text-burgundy">100%</p>
+                    <p class="text-xs uppercase tracking-wider text-charcoal/70">Sabor Autêntico</p>
+                </div>
+                <div class="h-8 w-px bg-cream-border"></div>
+                <div class="text-center">
+                    <p class="font-serif-title text-3xl font-bold text-burgundy">Low Carb</p>
+                    <p class="text-xs uppercase tracking-wider text-charcoal/70">Opções Disponíveis</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-cream-light border-y border-cream-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-gold-dark text-xs font-semibold uppercase tracking-widest">Avaliações VIP</span>
+                <h2 class="font-serif-title text-3xl font-bold text-burgundy mt-1">O Que Dizem Nossos Clientes</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-cream p-6 rounded-2xl border border-cream-border shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-gold mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm text-charcoal/80 italic leading-relaxed">"Impressionante! Sou diabética e há anos não comia um bolo tão refinado. O sabor do chocolate é idêntico ao tradicional belga. A embalagem é um espetáculo à parte."</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cream-border/60">
+                        <p class="font-serif-title font-bold text-burgundy">Heloísa M.</p>
+                        <p class="text-xs text-charcoal/75">Cliente Frequente - Jardins, SP</p>
+                    </div>
+                </div>
+
+                <div class="bg-cream p-6 rounded-2xl border border-cream-border shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-gold mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm text-charcoal/80 italic leading-relaxed">"Comprei o kit presente para o aniversário da minha esposa. Ficamos encantados com a qualidade das trufas e o cuidado com a entrega térmica. Nota mil!"</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cream-border/60">
+                        <p class="font-serif-title font-bold text-burgundy">Eduardo S.</p>
+                        <p class="text-xs text-charcoal/75">Cliente Verificado</p>
+                    </div>
+                </div>
+
+                <div class="bg-cream p-6 rounded-2xl border border-cream-border shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-gold mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm text-charcoal/80 italic leading-relaxed">"As receitas são extremamente equilibradas, sem aquele sabor doce artificial. Levei para uma festa e ninguém percebeu que era zero açúcar!"</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cream-border/60">
+                        <p class="font-serif-title font-bold text-burgundy">Dr. Roberto Lima</p>
+                        <p class="text-xs text-charcoal/75">Nutricionista & Gourmet</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter VIP Section -->
+    <section class="py-16 bg-cream">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-burgundy text-cream p-8 sm:p-12 rounded-3xl border border-gold/30 shadow-xl relative overflow-hidden">
+                <div class="relative z-10 space-y-4">
+                    <span class="text-gold text-xs font-semibold uppercase tracking-[0.25em]">Clube Zella Gourmet</span>
+                    <h2 class="font-serif-title text-2xl sm:text-4xl font-bold">Receba Convites & Lançamentos Exclusivos</h2>
+                    <p class="text-cream/80 text-xs sm:text-sm max-w-lg mx-auto font-light">Inscreva-se para receber em primeira mão nossas coleções sazonais, menus de Natal e ofertas VIP.</p>
+                    
+                    <form onsubmit="event.preventDefault(); toast('Inscrição confirmada. Bem-vindo ao Clube Zella!'); this.reset();" class="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                        <input type="email" aria-label="Seu e-mail" placeholder="Seu melhor e-mail" required class="px-5 py-3.5 rounded-full bg-cream text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-gold flex-grow">
+                        <button type="submit" class="px-8 py-3.5 bg-gold text-burgundy-dark font-semibold text-sm rounded-full hover:bg-gold-light transition shrink-0">Inscrever-se</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide-over Shopping Cart Drawer -->
+    <div id="cart-drawer-overlay" class="fixed inset-0 bg-charcoal/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <div id="cart-drawer" inert role="dialog" aria-modal="true" aria-label="Sua sacola" class="fixed inset-y-0 right-0 max-w-md w-full bg-cream z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between">
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-cream-border flex items-center justify-between bg-cream-light">
+            <div class="flex items-center gap-2">
+                <i data-lucide="shopping-bag" class="w-5 h-5 text-burgundy"></i>
+                <h3 class="font-serif-title font-bold text-xl text-burgundy">Sua Sacola Gourmet</h3>
+            </div>
+            <button id="close-cart-btn" aria-label="Fechar sacola" class="text-charcoal/75 hover:text-burgundy p-1">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Drawer Body Items List -->
+        <div class="p-6 overflow-y-auto flex-grow space-y-4" id="cart-items-container">
+            <!-- Dynamically Populated by JS -->
+        </div>
+
+        <!-- Drawer Footer Summary -->
+        <div class="p-6 border-t border-cream-border bg-cream-light space-y-4">
+            <div class="space-y-2 text-sm text-charcoal/80">
+                <div class="flex justify-between">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal" class="font-semibold text-burgundy">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between text-xs text-charcoal/75">
+                    <span>Embalagem Especial de Luxo:</span>
+                    <span class="text-gold-dark font-medium">Inclusa</span>
+                </div>
+                <div class="flex justify-between text-xs text-charcoal/75">
+                    <span>Entrega:</span>
+                    <span>Combinada no pedido</span>
+                </div>
+            </div>
+
+            <div class="pt-2 border-t border-cream-border">
+                <div class="flex justify-between text-base font-serif-title font-bold text-burgundy mb-4">
+                    <span>Total Estimado:</span>
+                    <span id="cart-total">R$ 0,00</span>
+                </div>
+
+                <button id="checkout-btn" onclick="sendOrder()" class="disabled:opacity-50 disabled:cursor-not-allowed w-full py-4 bg-burgundy text-cream rounded-full font-semibold text-sm hover:bg-burgundy-light transition shadow-lg flex items-center justify-center gap-2">
+                    <i data-lucide="lock" class="w-4 h-4"></i>
+                    <span>Enviar pedido pelo WhatsApp</span>
+                </button>
+
+                <p class="text-xs text-center text-charcoal/70 mt-2">Uma atendente faz o orçamento e explica como funciona a encomenda, pelo WhatsApp</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer id="lojas" class="bg-burgundy-dark text-cream border-t border-gold/20 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-cream/10">
+                
+                <!-- Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <a href="#" class="inline-block"><img src="images/logo/logo-footer.png" alt="Zella Confeitaria Zero Açúcar" class="block h-24"></a>
+                    <p class="text-xs text-cream/70 leading-relaxed font-light max-w-sm">
+                        Referência em alta confeitaria saudável. Doces finos, bolos festivos e chocolates gourmets elaborados artesanalmente com ingredientes nobres e zero açúcar.
+                    </p>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="https://www.instagram.com/zella.confeitaria/" target="_blank" rel="noopener" aria-label="Instagram da Zella" class="w-9 h-9 rounded-full bg-cream/10 flex items-center justify-center text-cream hover:bg-gold hover:text-burgundy transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-cream/10 flex items-center justify-center text-cream hover:bg-gold hover:text-burgundy transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigation Columns -->
+                <div>
+                    <h4 class="font-serif-title font-semibold text-gold text-lg mb-4">Ateliê & Menu</h4>
+                    <ul class="space-y-2.5 text-xs text-cream/70">
+                        <li><a href="#filosofia" class="hover:text-gold transition">Nossa História</a></li>
+                        <li><a href="#colecoes" data-filter="bolos" class="hover:text-gold transition">Bolos Sob Encomenda</a></li>
+                        <li><a href="#colecoes" data-filter="doces" class="hover:text-gold transition">Doces</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif-title font-semibold text-gold text-lg mb-4">Loja física</h4>
+                    <ul class="space-y-2.5 text-xs text-cream/70">
+                        <li><strong class="text-cream">Endereço:</strong> Alameda Rio Negro, 898 – Alphaville Industrial, Barueri/SP</li>
+                        <li><strong class="text-cream">Horário:</strong> Seg a Sáb 09h às 18h · Dom 09h às 14h</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif-title font-semibold text-gold text-lg mb-4">Atendimento VIP</h4>
+                    <ul class="space-y-2.5 text-xs text-cream/70">
+                        <li>WhatsApp: +55 11 94571-2524</li>
+                        <li>E-mail: contato@zellaconfeitaria.com.br</li>
+                        <li>Delivery pelo iFood</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Credits -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream/70 space-y-4 sm:space-y-0">
+                <p>&copy; 2026 Zella Confeitaria Zero Açúcar. Todos os direitos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:underline">Políticas de Privacidade</a>
+                    <a href="#" class="hover:underline">Termos de Uso</a>
+                    <a href="#" class="hover:underline">Informações Nutricionais</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Pop-up do produto: composição, rendimento e escolhas obrigatórias -->
+    <div id="opt-overlay" class="fixed inset-0 bg-charcoal/50 backdrop-blur-sm z-[55] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="opt-modal" inert role="dialog" aria-modal="true" aria-labelledby="opt-name" class="fixed z-[56] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[94vw] max-w-lg max-h-[92vh] flex flex-col bg-cream rounded-2xl border border-cream-border shadow-2xl overflow-hidden opacity-0 pointer-events-none transition-opacity duration-200">
+        <button id="opt-close" type="button" aria-label="Fechar" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-cream/95 text-burgundy shadow flex items-center justify-center hover:bg-cream-dark">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div id="opt-scroll" class="overflow-y-auto flex-grow">
+            <div id="opt-media"></div>
+            <div id="opt-body" class="p-5 sm:p-6"></div>
+        </div>
+        <div class="border-t border-cream-border bg-cream-light px-5 sm:px-6 py-4">
+            <p id="opt-hint" role="status" aria-live="polite" class="text-xs text-burgundy font-medium mb-2 min-h-[1rem]"></p>
+            <div class="flex items-center justify-end gap-3">
+                <button id="opt-cancel" type="button" class="px-4 py-2 text-sm text-charcoal/75 hover:text-burgundy">Cancelar</button>
+                <button id="opt-confirm" type="button" disabled class="disabled:opacity-50 disabled:cursor-not-allowed bg-burgundy text-cream text-sm font-medium px-6 py-2.5 rounded-full hover:bg-burgundy-light">Adicionar à sacola</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] max-w-[90vw] bg-charcoal text-cream text-sm px-5 py-3 rounded-full shadow-xl opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
